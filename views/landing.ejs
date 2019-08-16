@@ -1,0 +1,120 @@
+<% include ./partials/header %>
+  <section id="aboutSection">
+    <div style="height: 150px; overflow: hidden;" >
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="aboutSVG">
+      <path d="M-6.80,70.23 C150.00,150.00 351.07,-19.56 500.48,71.21 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #1C1B16;"></path></svg></div>
+      <h1 class="sectionTitle">About Me</h1>
+      <div class="sectionContainer">
+        <div class="imageContainer">
+          <img src="<%= user.image %>" alt="Third Eye Glass" />
+      </div>
+        <div id="aboutTextContainer">
+          <%= user.about %>
+      </div>
+  </section>
+<hr />
+  <section id="fillerSection">
+    <div class="cycle-slideshow"
+          data-cycle-slides="> p">
+        <p>"When you can do a common thing in an uncommon way; you will command the attention of the world."
+            <br />-George Washington Carver</p>
+        <p>"The desire to create is one of the deepest yearnings of the human soul."
+            <br />-Dieter F. Uchtdorf</p>
+        <p>"To practice any art, no matter how well or badly, is a way to make your soul grow. So do it."
+            <br />-Kurt Vonnegut</p>
+        <p>"Creativity involves breaking out of expected patterns in order to look at things in a different way."
+            <br />-Edward de Bono</p>
+    </div>
+  </section>
+  <hr id="hr"/>
+  <section class="iconSection">
+    <div class="iconContainer">
+      <div class="iconDivider">
+        <i class="fas fa-hands"></i><p>Hand Blown Glass</p>
+      </div>
+      <div class="iconDivider">
+        <i class="fas fa-users"></i><p>Open to Collabs</p>
+      </div>
+      <div class="iconDivider">
+        <i class="fas fa-shapes"></i><p>Geometric Designs</p>
+      </div>
+    </div>
+  </section>
+  <section id="gallerySection">
+    <hr class="third" />
+    <h1 class="sectionTitleGallery">Gallery</h1>
+    <div class="sectionContainerGalleryMobile">
+      <div class="cycle-slideshow"
+            data-cycle-prev="#prev"
+            data-cycle-next="#next"
+            data-cycle-slides="> ">
+            <% galleryItems.forEach(function(galleryItem){ %>
+              <div class="galleryImgContainer">
+              <a href="<%= galleryItem.image %>" data-lightbox="image-1"><img src="<%= galleryItem.image %>" /></a>
+                <div class="innerGalleryContainerLeft">
+                  <i class="far fa-eye"></i>
+                </div>
+                <div class="innerGalleryContainerRight">
+                  <form class="deleteForm" action="/<%= galleryItem._id %>?_method=DELETE" method="POST">
+                    <button name="button"><i class="fas fa-times"></i></button>
+                  </form>
+                </div>
+              </div>
+            <% }) %>
+      </div>
+      <span class="galleryControls" id=prev>Prev </span>
+      <span class="galleryControls" id=next> Next</span>
+    </div>
+    <div class="sectionContainerGallery">
+      <% galleryItems.forEach(function(galleryItem){ %>
+        <div class="galleryImgContainer">
+        <a href="<%= galleryItem.image %>" data-lightbox="image-1"><img src="<%= galleryItem.image %>" /></a>
+          <div class="innerGalleryContainerLeft">
+            <i class="far fa-eye"></i>
+          </div>
+          <div class="innerGalleryContainerRight">
+            <form class="deleteForm" action="/<%= galleryItem._id %>?_method=DELETE" method="POST">
+              <button name="button"><i class="fas fa-times"></i></button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+  <section id="contactSection">
+    <div class="contactSVG" >
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+      <path d="M345.97,-5.75 C152.69,67.10 262.02,75.98 236.64,156.08 L0.00,150.00 L0.00,0.00 Z" style="stroke: none; fill: #1C1B16;"></path></svg>
+    </div>
+    <div id="mobileSVG" >
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+      <path d="M213.19,0.00 C152.69,70.06 270.04,70.06 202.99,150.00 L500.00,150.00 L500.00,0.00 Z" style="stroke: none; fill: #1C1B16;"></path></svg>
+    </div>
+    <h1 class="contactSectionHeader">Contact</h1>
+    <div class="sectionContainer contactContainer">
+      <div class="contactTextContainer">
+        <p>Are you looking to collab?
+            <br /> Need something custom made?
+                <br />Or maybe you just want to say hi?</p>
+      </div>
+      <div class="formContainer">
+        <h4>Shoot me a messsage!</h4>
+        <form action="#" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" maxlength="250" minlength="4" required></textarea>
+          <input type="submit" value="Send" />
+        </form>
+      </div>
+    </div>
+    <div class="ui modal login">
+        <div class="loginFormContainer">
+          <form class="loginForm" action="/login" method="POST">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login">
+          </form>
+        </div>
+      </div>
+  </section>
+<% include ./partials/footer %>
