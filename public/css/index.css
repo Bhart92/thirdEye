@@ -1,121 +1,829 @@
+
 *{
-  font-size: 18px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+font-size: 18px;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 body{
-  position: relative;
-  background-color: #F9FAF6;
-  max-width: 100%;
+position: relative;
+background-color: #F9FAF6;
+max-width: 100%;
 }
 a{
-  text-decoration: none;
+text-decoration: none;
 }
 a:link,a:visited{
-  color: #1C1B16;
-  transition: all .35s ease-in-out;
+color: #1C1B16;
+transition: all .35s ease-in-out;
 }
 a:hover,a:active{
-  cursor: pointer;
-  color: #717068;
+cursor: pointer;
+color: #717068;
 }
 h4{
-  margin-bottom: 15px;
-  font-size: 1.1rem;
+margin-bottom: 15px;
+font-size: 1.1rem;
 }
 nav{
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
+height: 100px;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
 }
 nav #logoContainer{
-  width: 10%;
+width: 10%;
 }
 nav #logoContainer #navLogo{
-  height: 110px;
+height: 110px;
 }
 nav ul{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  width: 45%;
-  padding-right: 20px;
+display: flex;
+flex-direction: row;
+justify-content:space-between;
+width: 45%;
+padding-right: 20px;
 }
 nav ul li{
-  list-style: none;
+list-style: none;
 }
 nav ul li a{
-  font-size: 1.4rem;
-  font-family: 'Forum', cursive;
+font-size: 1.4rem;
+font-family: 'Forum', cursive;
 }
 nav ul li a span{
-  color: #5C80BC;
-  transition: all .35s ease-in-out;
-  font-size: inherit;
+color: #5C80BC;
+transition: all .35s ease-in-out;
+font-size: inherit;
 }
 nav ul li a span:hover{
-  color: #717068;
+color: #717068;
 }
 nav .adminControlContainer{
-  width: 49%;
-  display: flex;
-  align-self: stretch;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0 2rem 0 3rem;
+width: 49%;
+display: flex;
+align-self: stretch;
+align-items: center;
+justify-content: space-evenly;
+padding: 0 2rem 0 3rem;
 }
 #mobileNav{
-  width: 100%;
-  height: 100vh;
-  background-color: #F9FAF6;
+width: 100%;
+height: 100vh;
+background-color: #F9FAF6;
+position: absolute;
+top:0;
+bottom:0;
+left: 0;
+right: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 20;
+opacity: 0;
+transform: scale(0);
+transition: transform .5s ease-in-out,
+          opacity .65s ease-in-out;
+}
+#mobileNav ul{
+height: 65%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+margin-top: 3rem;
+list-style: none;
+padding: unset!important;
+}
+#mobileNav ul li a{
+font-size: 1.5rem;
+font-family: 'Forum', cursive;
+}
+.bodyOverflow{
+overflow: hidden!important;
+}
+.active{
+display: flex!important;
+opacity: 1!important;
+transform: scale(1)!important;
+}
+.addNewActive{
+display: unset!important;
+opacity: 1!important;
+transform: scale(1)
+          translate(-50%, -50%)!important;
+}
+header{
+height: calc(100vh - 100px);
+background-color: black;
+background: linear-gradient(rgba(0, 0, 0, .65), #1C1B16), url('../img/headerBackground.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+#heroBox h3{
+font-size: 5.5rem;
+color: #fff;
+font-family: 'Forum', cursive;
+opacity: 0;
+position: relative;
+top: 20px;
+}
+#heroBox h3 span{
+font-size: inherit;
+color: #FAB33C;
+transition: color .35s ease-in-out;
+}
+a .fas {
+align-self: center;
+color: white;
+font-size: 1.6rem;
+}
+#aboutSection{
+height: auto;
+background: #F9FAF6;
+width: 100%;
+position: relative;
+margin-bottom: 5em;
+}
+#aboutSection .sectionTitle{
+  margin-top: 3rem;
+  margin-bottom: -3rem;
+}
+.aboutSVG{
+height: 25%;
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+}
+.sectionContainer{
+display: flex;
+-ms-align-items: center;
+justify-content: center;
+justify-content: space-between;
+flex-direction: row;
+padding: 0 6em;
+}
+.imageContainer{
+flex-basis: 45%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.imageContainer img{
+width: 100%;
+height: 55%;
+}
+#aboutTextContainer{
+flex-basis: 45%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+p{
+text-align: justify;
+width: 100%;
+line-height: 185%;
+}
+h1{
+text-align: center;
+font-size: 2rem;
+position: relative;
+z-index: 10;
+padding-bottom: 5rem;
+}
+.contactSectionHeader{
+color: #fff;
+padding-top: 3.75rem;
+padding-bottom: unset;
+}
+hr{
+width: 50%;
+margin: 0 auto;
+}
+#fillerSection{
+height: 100vh;
+position: relative;
+background: #F9FAF6;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.iconSection{
+height: 100vh;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.iconContainer{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+flex-wrap: wrap;
+width: 70%;
+flex-basis: 50%;
+justify-content: space-around;
+position: relative;
+overflow: hidden;
+}
+.iconDivider{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+.iconDivider p{
+font-family: 'Forum', cursive;
+}
+i{
+font-size: 3rem;
+}
+/* ---Icon Styling--- */
+.fa-hands{
+color: #FAB33C;
+}
+.fa-users{
+color: #5C80BC;
+}
+.fa-eye, button .fa-times{
+color: #FAB33C;
+transform: scale(0);
+transition: transform .25s ease-in;
+}
+button .fa-times{
+font-size: 3rem;
+}
+button{
+border: none;
+background: transparent;
+}
+button:hover{
+cursor: pointer;
+}
+/* --- */
+#gallerySection{
+height: auto;
+position: relative;
+background: #F9FAF6;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding-bottom: 5rem;
+}
+hr.third{
+margin-bottom: 3.75rem;
+}
+.sectionTitleGallery{
+display: flex;
+text-align: center;
+}
+.sectionContainerGallery, .sectionContainerGalleryMobile {
+    display: flex;
+    height: 100%;
+    width: 95%;
+    position: relative;
+    z-index: 11;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 0 auto;
+}
+.sectionContainerGalleryMobile{
+display: none;
+}
+.sectionContainerGallery .galleryImgContainer{
+max-width: 30%;
+position: relative;
+z-index: 11;
+margin: 15px;
+height: auto;
+}
+.sectionContainerGallery .galleryImgContainer img{
+width: 100%;
+height: 100%;
+cursor: pointer;
+}
+.innerGalleryContainerLeft{
   position: absolute;
-  top:0;
-  bottom:0;
+  bottom: 0;
   left: 0;
-  right: 0;
+  width: 30%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  opacity: 0;
+  transition: transform .01s ease-in-out, opacity .25s ease-in-out;
+  background: rgba(0, 0, 0, .15);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.innerGalleryContainerRight{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  transition: transform .01s ease-in-out, opacity .25s ease-in-out;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.deleteBtn{
+  border: 1px solid black;
+  padding: 10px 15px;
+  border-radius: 15px;
+  transform: translate(0, 100%);
+  opacity: 0;
+  transition: transform .45s ease-in-out, opacity .5s ease-in-out;
+  transition-delay: .1s;
+}
+.sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerLeft{
+opacity: 1;
+transform: translate(0, 0%);
+}
+.sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerRight .deleteBtn{
+  opacity: 1;
+  transform: translate(0, 0%);
+}
+.sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerLeft .fa-eye, .sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerRight button .fa-times{
+transform: scale(1);
+}
+#contactSection{
+position: relative;
+height: 100vh;
+overflow: hidden;
+}
+footer{
+position: relative;
+height: 100px;
+width: 100%;
+background-color: #F9FAF6;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 11;
+}
+footer #footerLink{
+color: #000;
+font-size: 1rem;
+}
+.footerSVG{
+height: 150px;
+overflow: hidden;
+position: absolute;
+z-index: 10;
+width: 100%;
+top: -8.5rem;
+}
+#adminLogin{
+position: absolute;
+bottom: 5px;
+right: 5px;
+border: 1px solid rgba(0, 0, 0, .5);
+padding: 10px;
+font-size: 1rem;
+font-family: 'Forum', cursive;
+color: rgba(0, 0, 0, .5);
+transition: all .45s ease-in-out;
+}
+#adminLogin:hover{
+border: 1px solid rgba(0, 0, 0, 1);
+color: rgba(0, 0, 0, 1);
+}
+/* #fab33c */
+.cycle-slideshow{
+width: 100%;
+}
+.cycle-slideshow p{
+text-align: center;
+font-size: 1.1rem;
+font-family: 'Forum', cursive;
+}
+.contactSVG{
+height: 125%;
+width: 100%;
+overflow: hidden;
+position: absolute;
+top: 0;
+bottom: 0;
+left:0;
+z-index: 9;
+}
+.formContainer{
+position: relative;
+z-index: 25;
+flex-basis: 60%;
+height: 65%;
+margin-top: -6rem;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+justify-content: center;
+}
+.contactContainer{
+height: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+.contactTextContainer{
+flex-basis: 35%;
+position: relative;
+z-index: 10;
+height: 100%;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.contactTextContainer p{
+color: #fff;
+text-align: center;
+font-family: 'Forum', cursive;
+font-weight: 500;
+font-size: 1.2rem;
+margin-top: -6rem;
+}
+.formContainer form{
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+flex-direction: column;
+height: 100%;
+width: 65%;
+}
+.formContainer h4{
+text-align: center;
+margin-bottom: 2rem;
+font-size: 1.4rem;
+font-family: 'Forum', cursive;
+}
+.formContainer form textarea{
+resize: none;
+height: 150px;
+}
+.formContainer form input[type="submit"]{
+width: unset;
+align-self: flex-end;
+border: 1px solid rgba(0, 0, 0, .5);
+border-radius: 10px;
+padding: 7px 20px;
+transition: all .35s ease-in-out;
+}
+.formContainer form input[type="submit"]:hover{
+cursor: pointer;
+border: 1px solid rgba(0, 0, 0, 1);
+}
+.formContainer form input, .formContainer form textarea{
+width: 100%;
+background-color: transparent;
+border: none;
+outline: none;
+border-bottom: 2px solid rgba(0, 0, 0, .5);
+font-family: 'Forum', cursive;
+font-size: 1rem;
+}
+/* Login Modal */
+.modal{
+display: none;
+z-index: 11;
+height: 200px;
+width: 35%;
+background-color: #F9FAF6;
+}
+.loginFormContainer{
+display: flex;
+align-items: center;
+align-self: stretch;
+justify-content: center;
+flex-direction: column;
+height: 100%;
+}
+form.loginForm{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+form.loginForm .loginFormContainer{
+height: 100%;
+width: 50%;
+}
+.loginFormContainer input[type="text"],
+.loginFormContainer input[type="password"]{
+width: 100%;
+background-color: transparent;
+border: none;
+outline: none;
+border-bottom: 2px solid rgba(0, 0, 0, .5);
+font-family: 'Forum', cursive;
+font-size: 1rem;
+margin-bottom: 10px;
+}
+.loginFormContainer .loginForm input[type="submit"]{
+margin-top: .75rem;
+border: 1px solid rgba(0, 0, 0, .5);
+border-radius: 10px;
+padding: 7px 20px;
+background: transparent;
+transition: all .35s ease-in-out;
+}
+.loginFormContainer .loginForm input[type="submit"]:hover{
+cursor: pointer;
+border: 1px solid rgba(0, 0, 0, 1);
+}
+/* ------- */
+#mobileSVG{
+display: none;
+}
+.createItem, .aboutModal, .passwordReset{
+z-index: 11;
+height: 200px;
+width: 35%;
+background-color: #F9FAF6;
+}
+.createItem, .passwordReset{
+height: 250px;
+width: 35%;
+}
+.aboutModal{
+height: 500px;
+width: 45%;
+}
+.aboutModal form{
+height: 60%;
+width: 75%;
+}
+.aboutModal textarea{
+height: 50%;
+width: 100%;
+margin-bottom: 1rem;
+}
+textarea{
+resize: none!important;
+}
+.ui.selection.active.dropdown .menu {
+border: none;
+background: #F9FAF6;
+}
+.ui.dropdown {
+color: #1C1B16;
+border: none;
+background: #F9FAF6;
+font-size: 1rem;
+font-family: 'Lato', sans-serif;
+cursor: pointer;
+}
+.ui.compact.menu {
+width: 49%;
+}
+.ui.dropdown .menu > .item {
+font-size: 1rem;
+color: #1C1B16;
+}
+.ui.dropdown > .dropdown.icon {
+margin: unset;
+}
+.ui.dropdown .menu {
+background: #F9FAF6;
+}
+
+.ui.message{
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  right:0;
+  width: 100%;
+  height: 30px;
+  background: #565656;
+  color: white;
+  font-size: 1.2rem;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20;
-  opacity: 0;
-  transform: scale(0);
-  transition: transform .5s ease-in-out,
-              opacity .65s ease-in-out;
 }
-#mobileNav ul{
-    height: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-top: 3rem;
-    list-style: none;
-    padding: unset!important;
-  }
-#mobileNav ul li a{
-  font-size: 1.5rem;
-  font-family: 'Forum', cursive;
+
+#adminSection{
+  padding: 4rem 0;
+  height: auto;
+}
+#adminSection .galleryImgContainer{
+  padding-bottom: 3rem;
+}
+
+#adminAboutSection{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row{
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.column{
+  flex-basis: 5%;
+  min-width: 15%;
+  height: 200px;
+}
+.column img{
+  width: 100%;
+  height: 100%;
 }
 .bodyOverflow{
   overflow: hidden!important;
+  position: relative!important;
 }
-.active{
-  display: flex!important;
-  opacity: 1!important;
-  transform: scale(1)!important;
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  width: auto;
+  padding: 0 100px;
+  color: #1C1B16;
+  font-weight: bold;
+  font-size: 50px;
+  -webkit-user-select: none;
+  transition: all .20s ease-in-out;
 }
-.addNewActive{
-  display: unset!important;
-  opacity: 1!important;
-  transform: scale(1)
-              translate(-50%, -50%)!important;
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
 }
-header{
-  height: calc(100vh - 100px);
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  color: #565656;
+}
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+.lb-data .lb-number{
+  display: none!important;
+}
+
+.mySlides{
+  width: 100%;
+  height: 425px;
+  margin: 0 auto;
+}
+.mySlides img{
+  width: 1000px;
+  height: 425px;
+}
+/* Media Queries */
+@media only screen and (width: 1024px) and (height: 1366px){
+  nav ul {
+  width: 60%;
+  }
+  nav {
+  height: 90px;
+  position: relative;
+  }
+  nav ul li a{
+  font-size: 1.75rem;
+  }
+  h1{
+  font-size: 2.5rem;
+  }
+  #aboutSection{
+  margin-bottom: 10rem;
+  }
+  .aboutSVG{
+  top: -.5rem;
+  z-index: 5;
+  }
+  a .fas {
+  font-size: 4rem;
+  margin-top: -2rem;
+  }
+  .sectionContainer {
+  padding-top: 6rem;
+  }
+  #aboutTextContainer p{
+  font-size: 1.3rem;
+  line-height: 200%;
+  }
+  #fillerSection{
+  height: 60vh;
+  }
+  .cycle-slideshow{
+  width: 85%;
+  }
+  .cycle-slideshow p {
+  font-size: 1.3rem;
+  text-align: center;
+  width: 100%;
+  }
+  .iconSection {
+  height: 60vh;
+  }
+  i{
+  font-size: 4.5rem;
+  }
+  .iconDivider p {
+  font-size: 1.3rem;
+  }
+  .formContainer h4 {
+  font-size: 2rem;
+  }
+  .formContainer form {
+  height: 70%;
+  }
+  .formContainer form input, .formContainer form textarea {
+  font-size: 1.75rem;
+  }
+  #contactSection{
+  height: 75vh;
+  }
+  .contactContainer {
+  height: 80%;
+  padding-top: 0;
+  }
+  .contactTextContainer p {
+    font-size: 2rem;
+  }
+  footer #footerLink {
+  font-size: 1.5rem;
+  }
+  #adminLogin {
+  padding: 15px;
+  font-size: 1.5rem;
+  }
+  .modal {
+  height: 350px;
+  width: 65%;
+  }
+  .loginFormContainer .loginForm input[type="submit"] {
+    padding: 12px 25px;
+  }
+  .loginFormContainer input[type="text"],
+  .loginFormContainer input[type="password"]{
+  width: 50%;
+  margin-bottom: 25px;
+  }
+}
+@media only screen and (max-width: 768px){
+  nav{
+  justify-content: space-between;
+  }
+  nav ul {
+  display: none;
+  }
+  nav .adminControlContainer {
+  width: 60%;
+  }
+  .ui.compact.menu {
+  text-align: center;
+  width: 36%;
+  }
+  .ui.dropdown {
+  font-size: 1.05rem;
+  }
+  .modal {
+  height: 300px;
+  width: 85%;
+  }
+  .hamburger{
+  display: block;
+  }
+  header {
+  height: calc(90vh - 100px);
   background-color: black;
-  background: linear-gradient(rgba(0, 0, 0, .65), #1C1B16), url('../img/headerBackground.jpg');
+  background: linear-gradient(rgba(0, 0, 0, .65), #1C1B16), url(../img/headerBackground.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -123,850 +831,266 @@ header{
   align-items: center;
   justify-content: center;
   position: relative;
-}
-#heroBox h3{
-  font-size: 5.5rem;
-  color: #fff;
-  font-family: 'Forum', cursive;
-  opacity: 0;
-  position: relative;
-  top: 20px;
-}
-#heroBox h3 span{
-  font-size: inherit;
-  color: #FAB33C;
-  transition: color .35s ease-in-out;
-}
-a .fas {
-    align-self: center;
-    color: white;
-    font-size: 1.6rem;
-}
-#aboutSection{
-  height: auto;
-  background: #F9FAF6;
-  width: 100%;
-  position: relative;
-  margin-bottom: 5em;
-}
-.aboutSVG{
-  height: 25%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-.sectionContainer{
-  display: flex;
-  -ms-align-items: center;
-  justify-content: center;
-  align-items: space;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 0 6em;
-}
-.imageContainer{
-  flex-basis: 45%;
-}
-.imageContainer img{
-  width: 100%;
-  height: 100%;
-}
-#aboutTextContainer{
-  flex-basis: 45%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-p{
-  text-align: justify;
-  width: 100%;
-  line-height: 185%;
-}
-h1{
-  text-align: center;
+  }
+  .aboutSVG{
+  top: -.5rem;
+  z-index: 5;
+  }
+  a .fas {
   font-size: 2rem;
   position: relative;
   z-index: 10;
-  padding-bottom: 5rem;
-}
-.contactSectionHeader{
-  color: #fff;
-  padding-top: 3.75rem;
-  padding-bottom: unset;
-}
-hr{
-  width: 50%;
-  margin: 0 auto;
-}
-#fillerSection{
-  height: 100vh;
-  position: relative;
-  background: #F9FAF6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.iconSection{
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.iconContainer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 70%;
-  flex-basis: 50%;
-  justify-content: space-around;
-  position: relative;
-  overflow: hidden;
-}
-.iconDivider{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform: translate(0, 200%);
-  opacity: 0;
-  transition: all 1s ease-in-out;
-
-}
-.iconDivider p{
-  font-family: 'Forum', cursive;
-}
-i{
-  font-size: 3rem;
-}
-/* ---Icon Styling--- */
-.fa-hands{
-  color: #FAB33C;
-}
-.fa-users{
-  color: #5C80BC;
-}
-.fa-eye, button .fa-times{
-  color: #FAB33C;
-  transform: scale(0);
-  transition: transform .25s ease-in;
-}
-button .fa-times{
-  font-size: 3rem;
-}
-button{
-  border: none;
-  background: transparent;
-}
-button:hover{
-  cursor: pointer;
-}
-/* --- */
-#gallerySection{
-  height: auto;
-  position: relative;
-  background: #F9FAF6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding-bottom: 5rem;
-}
-hr.third{
-  margin-bottom: 3.75rem;
-}
-.sectionTitleGallery{
-  display: flex;
-  text-align: center;
-}
-.sectionContainerGallery, .sectionContainerGalleryMobile{
-  display: flex;
-  height: 100%;
-  width: 95%;
-  position: relative;
-  z-index: 11;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.sectionContainerGalleryMobile{
-  display: none;
-}
-.sectionContainerGallery .galleryImgContainer{
-  max-width: 30%;
-  position: relative;
-  overflow: hidden;
-  z-index: 11;
-  margin: 15px;
-}
-.sectionContainerGallery .galleryImgContainer img{
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-.innerGalleryContainerLeft{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 20%;
-  height: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  opacity: 0;
-  transition: transform .01s ease-in-out, opacity .25s ease-in-out;
-  background: rgba(0, 0, 0, .03);
-  border-radius: 10px;
-  cursor: pointer;
-}
-.innerGalleryContainerRight{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 15%;
-  height: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  opacity: 0;
-  transition: transform .01s ease-in-out, opacity .25s ease-in-out;
-  background: rgba(0, 0, 0, .03);
-  border-radius: 10px;
-  cursor: pointer;
-}
-.sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerLeft, .sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerRight{
-  opacity: 1;
-  transform: translate(0, 0%);
-}
-.sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerLeft .fa-eye, .sectionContainerGallery .galleryImgContainer:hover .innerGalleryContainerRight button .fa-times{
-  transform: scale(1);
-}
-#contactSection{
-  position: relative;
-  height: 130vh;
-  overflow: hidden;
-}
-footer{
-  position: relative;
-  height: 100px;
-  width: 100%;
-  background-color: #F9FAF6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 11;
-}
-footer #footerLink{
-  color: #000;
-  font-size: 1rem;
-}
-.footerSVG{
-  height: 150px;
-  overflow: hidden;
-  position: absolute;
-  z-index: 10;
-  width: 100%;
-  top: -8.5rem;
-}
-#adminLogin{
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  border: 1px solid rgba(0, 0, 0, .5);
-  padding: 10px;
-  font-size: 1rem;
-  font-family: 'Forum', cursive;
-  color: rgba(0, 0, 0, .5);
-  transition: all .45s ease-in-out;
-}
-#adminLogin:hover{
-  border: 1px solid rgba(0, 0, 0, 1);
-  color: rgba(0, 0, 0, 1);
-}
-/* #fab33c */
-.cycle-slideshow{
-  width: 100%;
-}
-.cycle-slideshow p{
-  text-align: center;
-  font-size: 1.1rem;
-  font-family: 'Forum', cursive;
-}
-.contactSVG{
-  height: 125%;
-  width: 100%;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left:0;
-  z-index: 9;
-}
-.formContainer{
-  position: relative;
-  z-index: 25;
-  flex-basis: 60%;
-  height: 65%;
-  margin-top: -6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-}
-.contactContainer{
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.contactTextContainer{
-  flex-basis: 35%;
-  position: relative;
-  z-index: 10;
-  height: 100%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.contactTextContainer p{
-  color: #fff;
-  text-align: center;
-  font-family: 'Forum', cursive;
-  font-weight: 500;
-  font-size: 1.2rem;
-  margin-top: -6rem;
-}
-.formContainer form{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  height: 100%;
-  width: 65%;
-}
-.formContainer h4{
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.4rem;
-  font-family: 'Forum', cursive;
-}
-.formContainer form textarea{
-  resize: none;
-  height: 150px;
-}
-.formContainer form input[type="submit"]{
-  width: unset;
-  align-self: flex-end;
-  border: 1px solid rgba(0, 0, 0, .5);
-  border-radius: 10px;
-  padding: 7px 20px;
-  transition: all .35s ease-in-out;
-}
-.formContainer form input[type="submit"]:hover{
-  cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 1);
-}
-.formContainer form input, .formContainer form textarea{
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid rgba(0, 0, 0, .5);
-  font-family: 'Forum', cursive;
-  font-size: 1rem;
-}
-/* Login Modal */
-.modal{
-  display: none;
-  z-index: 11;
-  height: 200px;
-  width: 35%;
-  background-color: #F9FAF6;
-}
-.loginFormContainer{
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-}
-form.loginForm{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-form.loginForm .loginFormContainer{
-  height: 100%;
-  width: 50%;
-}
-.loginFormContainer input[type="text"],
-.loginFormContainer input[type="password"]{
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid rgba(0, 0, 0, .5);
-  font-family: 'Forum', cursive;
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-.loginFormContainer .loginForm input[type="submit"]{
-  margin-top: .75rem;
-  border: 1px solid rgba(0, 0, 0, .5);
-  border-radius: 10px;
-  padding: 7px 20px;
-  background: transparent;
-  transition: all .35s ease-in-out;
-}
-.loginFormContainer .loginForm input[type="submit"]:hover{
-  cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 1);
-}
-/* ------- */
-#mobileSVG{
-  display: none;
-}
-.createItem, .aboutModal, .passwordReset{
-  z-index: 11;
-  height: 200px;
-  width: 35%;
-  background-color: #F9FAF6;
-}
-.createItem, .passwordReset{
-  height: 250px;
-  width: 35%;
-}
-.aboutModal{
-  height: 500px;
-  width: 45%;
-}
-.aboutModal form{
-  height: 60%;
-  width: 75%;
-}
-.aboutModal textarea{
-  height: 50%;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-textarea{
-  resize: none!important;
-}
-.ui.selection.active.dropdown .menu {
-    border: none;
-    background: #F9FAF6;
-}
-.ui.dropdown {
-    color: #1C1B16;
-    border: none;
-    background: #F9FAF6;
-    font-size: 1rem;
-    font-family: 'Lato', sans-serif;
-    cursor: pointer;
-}
-.ui.compact.menu {
-  width: 49%;
-}
-.ui.dropdown .menu > .item {
-  font-size: 1rem;
-  color: #1C1B16;
-}
-.ui.dropdown > .dropdown.icon {
-    margin: unset;
-}
-.ui.dropdown .menu {
-  background: #F9FAF6;
-}
-/* Media Queries */
-@media only screen and (width: 1024px) and (height: 1366px){
-  nav ul {
-    width: 60%;
-  }
-  nav {
-    height: 90px;
-    position: relative;
-  }
-  nav ul li a{
-    font-size: 1.75rem;
-  }
-  h1{
-    font-size: 2.5rem;
   }
   #aboutSection{
-    margin-bottom: 10rem;
-  }
-  .aboutSVG{
-    top: -.5rem;
-    z-index: 5;
-    }
-    a .fas {
-    font-size: 4rem;
-    margin-top: -2rem;
-  }
-  .sectionContainer {
-    padding-top: 6rem;
-  }
-  #aboutTextContainer p{
-    font-size: 1.3rem;
-    line-height: 200%;
-  }
-  #fillerSection{
-    height: 60vh;
-  }
-  .cycle-slideshow{
-    width: 85%;
-  }
-  .cycle-slideshow p {
-    font-size: 1.3rem;
-    text-align: center;
-    width: 100%;
-  }
-  .iconSection {
-    height: 60vh;
-    i{}
-  }
-  i{
-    font-size: 4.5rem;
-  }
-  .iconDivider p {
-    font-size: 1.3rem;
-  }
-  .formContainer h4 {
-    font-size: 2rem;
-  }
-  .formContainer form {
-    height: 70%;
-  }
-  .formContainer form input, .formContainer form textarea {
-    font-size: 1.75rem;
-  }
-  #contactSection{
-    height: 75vh;
-  }
-  .contactContainer {
-    height: 80%;
-    padding-top: 0;
-  }
-  .contactTextContainer p {
-      font-size: 2rem;
-  }
-  footer #footerLink {
-    font-size: 1.5rem;
-  }
-  #adminLogin {
-    padding: 15px;
-    font-size: 1.5rem;
-  }
-  .modal {
-    height: 350px;
-    width: 65%;
-  }
-  .loginFormContainer .loginForm input[type="submit"] {
-      padding: 12px 25px;
-  }
-  .loginFormContainer input[type="text"],
-  .loginFormContainer input[type="password"]{
-    width: 50%;
-    margin-bottom: 25px;
-  }
-}
-@media only screen and (max-width: 768px){
-  nav{
-    justify-content: space-between;
-  }
-  nav ul {
-    display: none;
-  }
-  nav .adminControlContainer {
-    width: 60%;
-  }
-  .ui.compact.menu {
-    text-align: center;
-    width: 36%;
-  }
-  .ui.dropdown {
-    font-size: 1.05rem;
-  }
-  .modal {
-    height: 300px;
-    width: 85%;
-  }
-  .hamburger{
-    display: block;
-  }
-  header {
-    height: calc(90vh - 100px);
-    background-color: black;
-    background: linear-gradient(rgba(0, 0, 0, .65), #1C1B16), url(../img/headerBackground.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .aboutSVG{
-    top: -.5rem;
-    z-index: 5;
-    }
-  a .fas {
-    font-size: 2rem;
-    position: relative;
-    z-index: 10;
-  }
-  #aboutSection{
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
   }
   .sectionContainer{
-    padding: 0 3em;
+  padding: 0 2em;
   }
   .imageContainer{
-    flex-basis: 50%;
+    height: 60%;
+  width: 100%;
   }
   #fillerSection {
-    height: 60vh;
+  height: 60vh;
   }
   .iconSection {
-    height: 60vh;
+  height: 60vh;
   }
   i{
-    font-size: 4rem;
+  font-size: 4rem;
   }
   .iconDivider p {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
   }
   hr.third {
+  margin-bottom: 3rem;
+  }
+  hr.second {
     margin-bottom: 3rem;
   }
+  .imageContainer img {
+    height: 100%;
+  }
   .sectionContainerGallery .galleryImgContainer {
-    max-width: 35%;
+  max-width: 35%;
   }
   #contactSection{
-    overflow: hidden;
-    height: 75vh;
+  overflow: hidden;
+  height: 75vh;
   }
   .contactContainer{
-    height: 85%;
+  height: 85%;
   }
   .contactTextContainer p {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
   }
   .contactTextContainer {
-    flex-basis: 45%;
+  flex-basis: 45%;
   }
   .formContainer form {
-    height: 65%;
+  height: 65%;
   }
   .formContainer {
-    align-items: flex-end;
+  align-items: flex-end;
   }
   .footerSVG{
-    height: 150px;
-    overflow: hidden;
-    position: absolute;
-    top: -8.5rem;
-    z-index: 10;
-    width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+  top: -8.5rem;
+  z-index: 10;
+  width: 100%;
   }
   .contactSVG{
-    height: 125%;
-    z-index: 9;
+  height: 125%;
+  z-index: 9;
   }
   footer{
-    z-index: 11;
-    background: #F9FAF6;
+  z-index: 11;
+  background: #F9FAF6;
   }
   .modal {
-    height: 250px;
-    width: 65%;
+  height: 250px;
+  width: 65%;
   }
   .loginFormContainer input[type="text"], .loginFormContainer input[type="password"] {
-    width: 75%;
+  width: 75%;
   }
   .loginFormContainer .loginForm input[type="submit"] {
-      padding: 12px 25px;
+    padding: 12px 25px;
   }
   .loginFormContainer input[type="text"], .loginFormContainer input[type="password"] {
-    color: black;
+  color: black;
   }
 }
 @media only screen and (max-width: 485px){
   nav #logoContainer {
-    display: none;
+  display: none;
   }
   nav .adminControlContainer {
-    width: 75%;
-    padding: 0;
+  width: 75%;
+  padding: 0;
   }
   .ui.simple.dropdown:hover > .menu {
-    width: 150px;
+  width: 150px;
   }
   .ui.dropdown .menu > .item {
-    font-size: 1.15rem;
-    padding: 25px 0;
+  font-size: 1.15rem;
+  padding: 25px 0;
   }
   .ui.dropdown {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
   }
   header {
-    height: calc(80vh - 100px);
+  height: calc(80vh - 100px);
   }
   #heroBox{
-    margin-top: 5rem;
+  margin-top: 5rem;
   }
   #heroBox h3 {
-    font-size: 3.5rem;
+  font-size: 3.5rem;
   }
   .sectionContainer{
-    flex-direction: column;
+  flex-direction: column;
+  height: 500px;
   }
   #aboutTextContainer p{
-    font-size: 1.15rem;
-    line-height: 200%;
+  font-size: 1.15rem;
+  line-height: 200%;
   }
   #fillerSection{
-    height: 100vh;
+  height: 100vh;
   }
   .iconSection {
-      height: 100vh;
+    height: 100vh;
   }
   .iconContainer{
-    flex-basis: 100%;
+  flex-basis: 100%;
   }
   .cycle-slideshow{
-    width: 90%;
+  width: 90%;
   }
   .cycle-slideshow p {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
   }
   .sectionContainerGallery .galleryImgContainer {
-    max-width: 100%;
+  max-width: 100%;
   }
   .sectionContainerGalleryMobile{
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
   }
   .sectionContainerGalleryMobile .cycle-slideshow .galleryImgContainer a img{
-    width: 100%!important;
-    align-self: stretch;
+  width: 100%!important;
+  align-self: stretch;
   }
   button .fa-times {
-    transform: scale(1);
-    font-size: 4rem;
+  transform: scale(1);
+  font-size: 4rem;
   }
   .innerGalleryContainerRight {
-    opacity: 1;
-    bottom: 10px;
-    right: 5px;
+  opacity: 1;
+  bottom: 10px;
+  right: 5px;
   }
-    .galleryImgContainer .cycle-slide{
-      width: 100%!important;
-    }
+  .galleryImgContainer .cycle-slide{
+    width: 100%!important;
+  }
   .galleryControls{
-    font-size: 1.4rem;
-    font-family: 'Forum', cursive;
+  font-size: 1.4rem;
+  font-family: 'Forum', cursive;
   }
-  .sectionContainerGallery{
-    display: none;
+  #adminSection .sectionContainerGallery{
+    display: flex;
+  }
+  .container{
+  display: none;
   }
   #contactSection{
-    height: 125vh;
+  height: 125vh;
   }
   .contactContainer {
-      height: 75%;
+    height: 75%;
   }
   .contactSVG{
-    display: none;
+  display: none;
   }
   #mobileSVG{
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    top:0;
-    right: 0;
-    bottom: 0;
-    width: 155%;
-    display: block;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  width: 155%;
+  display: block;
   }
   .contactTextContainer p {
-      padding-top: 5rem;
+    padding-top: 5rem;
   }
   .formContainer h4 {
-    color: white;
+  color: white;
   }
   .formContainer form {
-    width: 90%;
+  width: 90%;
   }
   .formContainer {
-    width: 90%;
-    flex-basis: unset;
-    align-items: flex-start;
+  width: 90%;
+  flex-basis: unset;
+  align-items: flex-start;
   }
   .formContainer form input, .formContainer form textarea {
-    border-bottom: 2px solid white;
-    color: white;
+  border-bottom: 2px solid white;
+  color: white;
   }
   .loginFormContainer input[type="text"], .loginFormContainer input[type="password"] {
-    margin-bottom: 25px;
-    color: black;
+  margin-bottom: 25px;
+  color: black;
   }
   .formContainer form input[type="submit"] {
-    border: 2px solid white;
-    color: white;
-    position: relative;
-    z-index: 25;
+  border: 2px solid white;
+  color: white;
+  position: relative;
+  z-index: 25;
   }
-  input[type="file" i] {
-    padding: 40px 0;
-    width: 95%;
+  input[type="file"] {
+  padding: 40px 0;
+  width: 95%;
   }
   h4{
-    font-size: 1.35rem;
+  font-size: 1.35rem;
   }
   .modal {
-    height: 350px;
-    width: 85%;
+  height: 350px;
+  width: 85%;
   }
   form.loginForm {
-    height: 75%;
-    width: 75%;
-    margin: 0 auto;
+  height: 75%;
+  width: 75%;
+  margin: 0 auto;
   }
-
 }
 @media only screen and (max-width: 320px){
   #heroBox h3 {
-    font-size: 3rem;
+  font-size: 3rem;
   }
   .contactTextContainer p {
-    padding-top: 3rem;
+  padding-top: 3rem;
   }
   .contactTextContainer p {
-    font-size: .9rem;
+  font-size: .9rem;
   }
   .formContainer h4 {
-    font-size: 1rem;
-    margin-top: -2rem;
+  font-size: 1rem;
+  margin-top: -2rem;
   }
   .formContainer form input, .formContainer form textarea {
-    margin-bottom: .45rem;
-    width: 100%;
+  margin-bottom: .45rem;
+  width: 100%;
   }
   .formContainer {
-    width: 100%;
+  width: 100%;
   }
 }

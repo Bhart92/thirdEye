@@ -9,43 +9,42 @@ const express = require('express'),
        authRoutes = require("./routes/auth"),
        aboutRoutes = require("./routes/about"),
        galleryRoutes = require("./routes/gallery"),
+       contactRoutes = require("./routes/contact"),
        port = process.env.PORT || 3000;
        require("dotenv").config();
 
 const GalleryItem = require('./models/galleryItem.js'),
       User = require('./models/user');
-      var multer = require('multer')
+const multer = require('multer')
 
-
-      var storage = multer.diskStorage({
+      const storage = multer.diskStorage({
         filename: function(req, file, callback) {
           callback(null, Date.now() + file.originalname);
         }
       });
-      var imageFilter = function (req, file, cb) {
+      const imageFilter = function (req, file, cb) {
           // accept image files only
           if (!file.originalname.match(/\.(jpg|jpeg|png|gif|jfif|tif)$/i)) {
               return cb(new Error(''), false);
           }
           cb(null, true);
       };
-      var upload = multer({ storage: storage, fileFilter: imageFilter}),
+      const upload = multer({ storage: storage, fileFilter: imageFilter}),
           cloudinary = require('cloudinary');
       cloudinary.config({
-        cloud_name: 'thirdeyeglassworks',
+        cloud_name: 'thirdeyeglassworks710',
         api_key: process.env.CLOUDINARY_KEY,
         api_secret: process.env.CLOUDINARY_SECRET
       });
 
-
-mongoose.connect("mongodb://localhost:27017/thirdEye", {useNewUrlParser: true});
+// mongoose.connect("mongodb://localhost:27017/thirdEye", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://adminMan221199:Bella2121@thirdeyeglassart-tbwph.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(flash());
-
 
 app.use(require('express-session')({
   secret: 'LoyGlass',
@@ -68,11 +67,11 @@ app.use((req, res, next) => {
 app.use("/", authRoutes);
 app.use("/", galleryRoutes);
 app.use("/", aboutRoutes);
-
+app.use("/contact", contactRoutes);
 
 app.get('/', function(req, res){
   GalleryItem.find({}, function(err, galleryItems){
-    User.findById('5d563b156c036e290c844cfd', function(err, user){
+    User.findById('5d6df6c49b420d00170bdca6', function(err, user){
       if(err){
         console.log(err);
       } else{
@@ -81,30 +80,5 @@ app.get('/', function(req, res){
     });
   });
 });
-
-app.put('/:id', upload.single("image"), function(req, res){
-  User.findById('5d563b156c036e290c844cfd', async function(err, user){
-    if(err){
-      console.log(err);
-    } else{
-      if(req.file){
-        try{
-          await cloudinary.v2.uploader.destroy(user.imageId);
-          let result = await cloudinary.v2.uploader.upload(req.file.path);
-          user.imageId = result.public_id;
-          user.image = result.secure_url;
-        } catch(err){
-          console.log(err);
-          return res.redirect('about');
-        }
-      }
-      user.about = req.body.about;
-      user.save();
-      req.flash('success', 'About me updated')
-      res.redirect('/');
-    }
-  });
-});
-
 
 app.listen(port, () => console.log('live'));

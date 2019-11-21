@@ -10,6 +10,7 @@
       </div>
         <div id="aboutTextContainer">
           <%= user.about %>
+        </div>
       </div>
   </section>
 <hr />
@@ -26,8 +27,9 @@
             <br />-Edward de Bono</p>
     </div>
   </section>
-  <hr id="hr"/>
+  <hr id="hr" class="second"/>
   <section class="iconSection">
+    <h1>What I do...</h1>
     <div class="iconContainer">
       <div class="iconDivider">
         <i class="fas fa-hands"></i><p>Hand Blown Glass</p>
@@ -54,32 +56,36 @@
                 <div class="innerGalleryContainerLeft">
                   <i class="far fa-eye"></i>
                 </div>
-                <div class="innerGalleryContainerRight">
-                  <form class="deleteForm" action="/<%= galleryItem._id %>?_method=DELETE" method="POST">
-                    <button name="button"><i class="fas fa-times"></i></button>
-                  </form>
-                </div>
+              </div>
+              <div class="innerGalleryContainerRight">
+                <% if(currentUser && currentUser.isAdmin && currentUser.isLoggedIn === true){%>
+                <form class="deleteForm" action="/<%= galleryItem._id %>?_method=DELETE" method="POST">
+                  <button name="button"><i class="fas fa-times"></i></button>
+                </form>
+                <% } %>
               </div>
             <% }) %>
       </div>
       <span class="galleryControls" id=prev>Prev </span>
       <span class="galleryControls" id=next> Next</span>
     </div>
-    <div class="sectionContainerGallery">
-      <% galleryItems.forEach(function(galleryItem){ %>
-        <div class="galleryImgContainer">
-        <a href="<%= galleryItem.image %>" data-lightbox="image-1"><img src="<%= galleryItem.image %>" /></a>
-          <div class="innerGalleryContainerLeft">
-            <i class="far fa-eye"></i>
-          </div>
-          <div class="innerGalleryContainerRight">
-            <form class="deleteForm" action="/<%= galleryItem._id %>?_method=DELETE" method="POST">
-              <button name="button"><i class="fas fa-times"></i></button>
-            </form>
-          </div>
-        </div>
-      <% }) %>
+<div class="container">
+  <% galleryItems.forEach(function(galleryItem){ %>
+  <div class="mySlides">
+    <a href="<%= galleryItem.image %>" data-lightbox="image-1"><img src="<%= galleryItem.image %>" onclick="currentSlide(1)" style="width: 50%; display: block; margin: 0 auto;"/></a>
+  </div>
+    <% }) %>
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+  <div class="row">
+    <% galleryItems.forEach(function(galleryItem){ %>
+    <div class="column">
+      <img src="<%= galleryItem.image %>" class="demo demoItem" style="width:100%"/>
     </div>
+    <% }) %>
+  </div>
+
+</div>
   </section>
   <section id="contactSection">
     <div class="contactSVG" >
@@ -99,7 +105,7 @@
       </div>
       <div class="formContainer">
         <h4>Shoot me a messsage!</h4>
-        <form action="#" method="POST">
+        <form action="/contact/<%= user._id %>" method="POST">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Your Email" required />
           <textarea name="message" placeholder="Your Message" maxlength="250" minlength="4" required></textarea>

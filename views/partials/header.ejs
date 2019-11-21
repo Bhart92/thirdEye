@@ -17,10 +17,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" type="text/css" rel="stylesheet" />
     <link href="css/lightbox.css" rel="stylesheet">
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.css" rel="stylesheet" type="text/css" />
+    <link href="css/dropdown.css" rel="stylesheet" type="text/css" />
     <link href="css/dimmer.css" rel="stylesheet" type="text/css" />
     <link href="css/hamburger.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id="mobileNav">
@@ -35,6 +35,7 @@
       <div id="logoContainer">
         <a href="/"><img src='../img/navLogo.png' alt="Third Eye Glass" id="navLogo"/></a>
       </div>
+      <% if(currentUser && currentUser.isAdmin){ %>
       <div class="adminControlContainer">
         <div class="ui compact menu">
           <div class="ui simple dropdown item">
@@ -52,11 +53,11 @@
             <div class="menu">
               <div class="item addNew">Add to Gallery</div>
               <div class="item editAbout">Edit About</div>
-              <div class="item passwordResetLink">Reset Password</div>
             </div>
           </div>
         </div>
       </div>
+      <% } %>
       <ul>
         <li><a href="#headerSection">Home</a></li>
         <li><a href="#aboutSection">About</a></li>
@@ -70,6 +71,25 @@
       </button>
     </nav>
     <header id="headerSection">
+      <% if(error && error.length > 0){ %>
+        <div class="ui negative message">
+          <div class="header">
+            <p>
+              <%= error %>
+
+            </p>
+          </div>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+      <div class="ui positive message centered">
+        <div class="header">
+          <p>
+            <%= success %>
+          </p>
+        </div>
+      </div>
+      <% } %>
       <div id="heroBox"><h3>Third <span>Eye</span> <br />
                             &nbsp; &nbsp;  <span>Glass</span> Art</h3></div>
     </header>

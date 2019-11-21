@@ -2,7 +2,8 @@ var express = require("express"),
     router = express.Router(),
     GalleryItem = require('../models/galleryItem'),
     passport = require("passport"),
-    multer = require('multer');
+    multer = require('multer'),
+    middleware = require('../middleware/index');
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
     callback(null, Date.now() + file.originalname);
@@ -24,16 +25,16 @@ cloudinary.config({
 });
 
 
-//create route
-router.post('/:id', upload.single('image'), function(req, res){
+//create gallery item route
+router.post('/:id', middleware.isLoggedIn,  upload.single('image'), function(req, res){
   if(!req.file){
     req.flash('error', 'You need to upload a file');
-    return res.redirect('back');
+    res.redirect('/admin');
   } else{
     cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
       if(err){
         console.log(err);
-        return res.redirect('back');
+        res.redirect('/admin');
       }
       // add cloudinary url for the image to the Post object under image property
       req.body.image = result.secure_url;
@@ -45,14 +46,14 @@ router.post('/:id', upload.single('image'), function(req, res){
           return res.redirect('back');
         }
         req.flash('success', 'Successfully Added');
-        res.redirect('/');
+        res.redirect('/admin');
       });
     });
   }
 });
 
 //delete route
-router.delete('/:id', function(req, res){
+router.delete('/:id', middleware.isLoggedIn, middleware.itemExists, function(req, res){
   GalleryItem.findById(req.params.id, function(err, galleryItem){
     if(err){
       console.log(err);
@@ -60,7 +61,7 @@ router.delete('/:id', function(req, res){
     } else{
       galleryItem.remove();
       req.flash('success', 'Item deleted');
-      res.redirect('/');
+      res.redirect('/admin');
     }
   });
 });
